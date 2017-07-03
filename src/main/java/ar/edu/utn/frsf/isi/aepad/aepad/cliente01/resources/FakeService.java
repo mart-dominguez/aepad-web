@@ -22,38 +22,28 @@ import javax.ws.rs.core.Response;
  *
  * @author mdominguez
  */
-@Path("fake")
+@Path("/test")
 @Stateless
 public class FakeService {
     
     @GET    
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("metodo1")
+    @Path("/metodo1")
     public Response doAlgo(){
         Client client = ClientBuilder.newClient();   
-        WebTarget target = client.target("http://172.18.0.5:8080/aepad-server01/api/fake/metodo1");  
+        WebTarget target = client.target("http://172.18.0.5:8080/aepad-logica/api/rrhh/historial/1000");  
         JsonObject response = target.request(MediaType.APPLICATION_JSON).get(JsonObject.class);   
         return Response.ok(response,MediaType.APPLICATION_JSON).build();
     }
     
     @GET    
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("metodo2")
+    @Path("/metodo2")
     public Response doAlgo2(){
         Client client = ClientBuilder.newClient();   
-        WebTarget target = client.target("http://172.18.0.5:8080/aepad-server01/api/fake/metodo2");  
-        Json response = target.request(MediaType.APPLICATION_JSON).get(Json.class);   
+        WebTarget target = client.target("http://172.18.0.5:8080/aepad-logica/api/rrhh/liquidar/1000");  
+        JsonObject response = target.request(MediaType.APPLICATION_JSON).get(JsonObject.class);   
         return Response.ok(response,MediaType.APPLICATION_JSON).build();
     }
-    
-        @GET    
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("metodo3")
-    public Response doAlgo4(){
-        Client client = ClientBuilder.newClient();   
-        WebTarget target = client.target("http://172.18.0.5:8080/aepad-server01/api/rrhh/historial/1000");  
-        Json response = target.request(MediaType.APPLICATION_JSON).get(Json.class);   
-        return Response.ok(response,MediaType.APPLICATION_JSON).build();
-    }
-
+            
 }
